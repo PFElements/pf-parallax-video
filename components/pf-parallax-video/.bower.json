@@ -1,0 +1,27 @@
+{
+  "name": "pf-parallax-video",
+  "main": "pf-parallax-video.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
+    "web-component-tester": "v6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0-rc.2"
+  },
+  "homepage": "https://github.com/PFElements/pf-parallax-video",
+  "_release": "16af1cf93d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "16af1cf93d8a5d5e02f4dd9b21039bb580fb96e0"
+  },
+  "_source": "https://github.com/PFElements/pf-parallax-video.git",
+  "_target": "master",
+  "_originalSource": "PFElements/pf-parallax-video",
+  "_direct": true
+}

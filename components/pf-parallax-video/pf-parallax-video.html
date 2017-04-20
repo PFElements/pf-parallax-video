@@ -1,0 +1,242 @@
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<link rel="import" href="../polymer/polymer.html">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+<!--
+`pf-parallax-video`
+
+
+@demo demo/index.html
+-->
+
+
+
+
+<dom-module id="pf-parallax-video">
+
+    <template>
+
+
+        <style>
+
+            /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+            /* Global Styles */
+
+            @import url("//fonts.googleapis.com/css?family=Poiret+One|Josefin+Sans");
+
+
+            html,body {
+                color:#fddaec;
+                font-family:"Josefin Sans", sans-serif;
+                font-size:100%;
+                height:100%;
+                line-height:1.45;
+            }
+
+
+            /* Video Overlay */
+
+            #overlay {
+                background-color:rgba(0,0,0,.65);
+                height:100%;
+                left:0;
+                position:relative;
+                top:0;
+                transition:background-color 300ms ease;
+                width:100%;
+            }
+
+            .fade { background-color:var(--on-pause-video-fade-color,rgba(0,0,0,.85)) !important; }
+
+
+            /* Hero Video + Fallback */
+
+            #herovid {
+                backface-visibility:hidden;
+                background-size:cover;
+                bottom:0;
+                height:auto;
+                min-height:100%;
+                min-width:100%;
+                perspective:1000px;
+                position:fixed;
+                right:0;
+                width:auto;
+                z-index:-1;
+            }
+
+            #hero-pic {
+                display:block;
+                height:auto;
+                width:100%;
+            }
+
+            .statePause {
+                background: var(--pause-button-img,url(media/imgs/ic_pause.png) left top no-repeat);
+                bottom:0;
+                cursor:pointer;
+                font-size:2.25em;
+                left:0;
+                padding:0.55em 1.05em 0.35em 1em;
+                position:absolute;
+            }
+            .stateResume {
+                background: var(--play-button-img,url(media/imgs/ic_play.png) left top no-repeat);
+                bottom:0;
+                cursor:pointer;
+                font-size:2.25em;
+                left:0;
+                padding:0.55em 1.05em 0.35em 1em;
+                position:absolute;
+            }
+
+
+            /* Content Styles */
+
+            #title {
+                backface-visibility:hidden;
+                left:0;
+                perspective:1000px;
+                position:fixed;
+                width:100%;
+                transform: var(--title-transform);
+                opacity: var(--title-opacity);
+
+            }
+
+            #title h1 {
+                background-color:rgba(0,0,0,.5);
+                font-family:"Poiret One", sans-serif;
+                font-size:2.5em;
+                padding:.5em .725em;
+            }
+
+
+            .visible-desktop.fill-pause{
+
+            }
+            .overlaytop{
+                height: var(--pf-parallax-video-height,500px);
+                background:var(--overlay-pattren-img,url(media/imgs/pattren.png));
+
+            }
+            /* Media Queries */
+
+            @media only screen and (max-width:768px) {
+                #overlay { height:auto; }
+            }
+
+
+            /* Visibility Helpers */
+
+            @media only screen and (min-width:769px) {
+                .visible-mobile,.visible-tablet,.hidden-desktop { display:none !important; }
+                #topoverlay{
+                    display: block;
+                }
+            }
+
+            @media only screen and (min-width:480px) and (max-width:768px) {
+                .visible-mobile,.hidden-tablet,.visible-desktop { display:none !important; }
+                #topoverlay{
+                    display: none;
+                }
+            }
+
+            @media only screen and (max-width:479px) {
+                .hidden-mobile,.visible-tablet,.visible-desktop { display:none !important; }
+                #topoverlay{
+                    display: none;
+                }
+
+            }
+
+        </style>
+      <div id="topoverlay" class$="{{divoverlay}}" >
+      </div>
+    <div id="overlay" class$="{{overlayclass}}">
+
+      <video class="visible-desktop" id="herovid" poster="{{videoposter}}" autoplay loop muted>
+        <source  type="video/webm" src="{{webmsrc}}">
+        <source type="video/mp4" src="{{mp4src}}">
+      </video>
+      <div id="state" class$="{{stateclass}}" ><img class="fill-pause"></div>
+      <img id="hero-pic" class="hidden-desktop" src="{{videoposter}}" alt="">
+    </div>
+
+
+
+  </template>
+
+  <script>
+    class PFParallaxVideo extends Polymer.Element {
+      static get is() {
+        return 'pf-parallax-video';
+      }
+
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'pf-parallax-video'
+          },
+          _self: {
+            type: Object
+
+          },
+            webmsrc:{
+                type: String,
+                value:"media/polina.wemb"
+            },
+            mp4src:{
+                type: String,
+                value:"media/polina.mp4"
+            },
+            videoposter:{
+                type: String,
+                value:"media/polina.jpg"
+            }
+        };
+      }
+      _pauseResume(){
+        var video = this.$.herovid
+     //   var icons = $('#state > span');
+   //     this.$.overlay.toggleClass('fade');
+        if (video.paused) {
+          video.play();
+          this.divoverlay="overlaytop"
+          this.stateclass="statePause visible-desktop"
+
+        } else {
+          this.divoverlay="overlaytop fade"
+          video.pause();
+
+          this.stateclass="stateResume visible-desktop"
+
+        //  icons.removeClass('iconicfill-pause').addClass('iconicfill-play');
+        }
+      }
+      ready() {
+
+        super.ready();
+    this.stateclass="statePause visible-desktop"
+          this.divoverlay="overlaytop"
+        this.$.state.addEventListener('click', e => this._pauseResume(e)
+      );
+        var scrolled = this.scrollTop;
+
+      //  this.customStyle[;
+        //this.customStyle['--title-opacity'] =1 - scrolled / 400;
+  //      this.updateStyles({'--title-transform' : 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)','--title-opacity':1 - scrolled / 400});
+  //      this.$.hero - vid.css('transform', 'translate3d(0, ' + -(scrolled * 0.25) + 'px, 0)');
+      }
+    }
+
+    window.customElements.define(PFParallaxVideo.is, PFParallaxVideo);
+ //   window.addEventListener('WebComponentsReady', function(e) {
+  //  });
+  </script>
+</dom-module>
