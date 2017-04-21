@@ -29,7 +29,7 @@
 
 
             html,body {
-                color:#fddaec;
+
                 font-family:"Josefin Sans", sans-serif;
                 font-size:100%;
                 height:100%;
@@ -40,7 +40,7 @@
             /* Video Overlay */
 
             #overlay {
-                background-color:rgba(0,0,0,.65);
+
                 height:100%;
                 left:0;
                 position:relative;
@@ -65,6 +65,7 @@
                 position:fixed;
                 right:0;
                 width:auto;
+                transform: var(--video-transform,translate3d(0px, 0px, 0px));
                 z-index:-1;
             }
 
@@ -100,7 +101,7 @@
                 backface-visibility:hidden;
                 left:0;
                 perspective:1000px;
-                position:fixed;
+                display:var(--title-heading-disply,block);
                 width:100%;
                 transform: var(--title-transform);
                 opacity: var(--title-opacity);
@@ -108,10 +109,13 @@
             }
 
             #title h1 {
-                background-color:rgba(0,0,0,.5);
+                background-color:var(--title-heading-bg,rgba(0,0,0,.5));
                 font-family:"Poiret One", sans-serif;
                 font-size:2.5em;
                 padding:.5em .725em;
+                margin-top: 0px;
+                color:var(--title-text-color,#fff);
+
             }
 
 
@@ -156,6 +160,7 @@
 
         </style>
       <div id="topoverlay" class$="{{divoverlay}}" >
+          <div id="title"><h1>{{title}}</h1></div>
       </div>
     <div id="overlay" class$="{{overlayclass}}">
 
@@ -170,7 +175,11 @@
 
 
   </template>
-
+<script>
+    function getScrolledValue(){
+        return  $(this).scrollTop();
+    }
+</script>
   <script>
     class PFParallaxVideo extends Polymer.Element {
       static get is() {
@@ -179,25 +188,30 @@
 
       static get properties() {
         return {
-          prop1: {
+            title: {
             type: String,
-            value: 'pf-parallax-video'
+            value: 'PF Parallax Video'
           },
           _self: {
             type: Object
 
           },
+            parallaxvalue: {
+            type: Number,
+                value:0.25
+
+          },
             webmsrc:{
                 type: String,
-                value:"media/polina.wemb"
+                value:"../media/polina.wemb"
             },
             mp4src:{
                 type: String,
-                value:"media/polina.mp4"
+                value:"../media/polina.mp4"
             },
             videoposter:{
                 type: String,
-                value:"media/polina.jpg"
+                value:"../media/polina.jpg"
             }
         };
       }
@@ -219,14 +233,30 @@
         //  icons.removeClass('iconicfill-pause').addClass('iconicfill-play');
         }
       }
-      ready() {
+
+
+        doThisStuffOnScroll() {
+            var scrolled = getScrolledValue()
+
+            _self.updateStyles({'--video-transform' : 'translate3d(0, ' + -(scrolled * _self.parallaxvalue) + 'px, 0)'});
+            _self.updateStyles({'--title-transform' : 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)','--title-opacity':1 - scrolled / 400});
+
+        }
+
+        ready() {
 
         super.ready();
-    this.stateclass="statePause visible-desktop"
+            _self=this;
+           window.onscroll = this.doThisStuffOnScroll;
+            var scrolled = this.scrollTop;
+            this.updateStyles({'--video-transform' : 'translate3d(0, ' + -(scrolled * this.parallaxvalue) + 'px, 0)'});
+            this.updateStyles({'--title-transform' : 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)','--title-opacity':1 - scrolled / 400});
+
+            this.stateclass="statePause visible-desktop"
           this.divoverlay="overlaytop"
         this.$.state.addEventListener('click', e => this._pauseResume(e)
       );
-        var scrolled = this.scrollTop;
+
 
       //  this.customStyle[;
         //this.customStyle['--title-opacity'] =1 - scrolled / 400;

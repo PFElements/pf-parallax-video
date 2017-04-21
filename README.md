@@ -41,6 +41,9 @@ Custom property                         | Description                           
 `--overlay-pattren-img`                 |  A pattren image on video                 | media/imgs/pattren.png
 `--pause-button-img`                    |  Video Pause button image                 | url(media/imgs/ic_pause.png) left top no-repeat
 `--play-button-img`                     |  Video Play button image                  | media/imgs/ic_play.png) left top no-repeat
+`--heading-disply`                      |  'none' if you want to hide heading       | block
+`--title-heading-bg`                    |  Background color of heading              | rgba(0,0,0,.5)
+`--title-text-color`                    |  Heading text color                       | #fff
 
 
 ## Viewing Your Application
