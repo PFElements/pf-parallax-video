@@ -31,11 +31,16 @@ See the list of elements, demos, and documentation by browsing this collection o
 ---
 #Usage
 
-`<pf-parallax-video webmsrc="path of webm video" videoposter="path of poster for video"></pf-parallax-video>` 
+`<pf-parallax-video id="pf-parallax"
+                     title="PF PARALLAX VIDEO"
+                     videoposter="/media/polina.jpg"
+                     src1="../media/small.mp4"
+                     parallaxvalue="0.30"
+  ></pf-parallax-video>` 
 
 
 Custom property                         | Description                               | Default
-----------------------------------------|-------------------------------------------|-------------------------
+----------------------------------------|-------------------------------------------|------------------------
 `--pf-parallax-video-height`            |  Height of video div                      | 500px
 `--on-pause-video-fade-color`           |  A transprent color when video is paused  | rgba(0,0,0,.85)
 `--overlay-pattren-img`                 |  A pattren image on video                 | media/imgs/pattren.png
@@ -45,7 +50,30 @@ Custom property                         | Description                           
 `--title-heading-bg`                    |  Background color of heading              | rgba(0,0,0,.5)
 `--title-text-color`                    |  Heading text color                       | #fff
 
+###Inline Demo
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="pf-parallax-video">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
 
+
+
+
+<pf-parallax-video id="pf-parallax"
+                     title="PF PARALLAX VIDEO"
+                     videoposter="/media/polina.jpg"
+                     src1="../media/small.mp4"
+                     parallaxvalue="0.30"
+  ></pf-parallax-video>
+```
 ## Viewing Your Application
 
 ```
