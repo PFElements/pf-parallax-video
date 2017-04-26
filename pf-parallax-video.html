@@ -179,8 +179,12 @@
     function getScrolledValue(){
         return  $(this).scrollTop();
     }
+    function setSelf(ref){
+       myEle=ref
+    }
 </script>
   <script>
+      var abc="111"
     class PFParallaxVideo extends Polymer.Element {
       static get is() {
         return 'pf-parallax-video';
@@ -203,15 +207,15 @@
           },
             src1:{
                 type: String,
-                value:"../media/polina.wemb"
+                value:"http://thenewcode.com/assets/videos/polina.mp4"
             },
             src2:{
                 type: String,
-                value:"../media/polina.mp4"
+                value:"http://thenewcode.com/assets/videos/polina.mp4"
             },
-            videoposter:{
+            videoposter: {
                 type: String,
-                value:"../media/polina.jpg"
+                value: "http://www.markhillard.com/sandbox/media/polina.jpg"
             }
         };
       }
@@ -236,17 +240,19 @@
 
 
         doThisStuffOnScroll() {
-            var scrolled = getScrolledValue()
 
-            _self.updateStyles({'--video-transform' : 'translate3d(0, ' + -(scrolled * _self.parallaxvalue) + 'px, 0)'});
-            _self.updateStyles({'--title-transform' : 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)','--title-opacity':1 - scrolled / 400});
+            var scrolled =$(this).scrollTop();
+
+var ele=myEle
+            ele.updateStyles({'--video-transform' : 'translate3d(0, ' + -(scrolled * ele.parallaxvalue) + 'px, 0)'});
+            ele.updateStyles({'--title-transform' : 'translate3d(0, ' + -(scrolled * 0.2) + 'px, 0)','--title-opacity':1 - scrolled / 400});
 
         }
 
         ready() {
 
         super.ready();
-            _self=this;
+setSelf(this)
            window.onscroll = this.doThisStuffOnScroll;
             var scrolled = this.scrollTop;
             this.updateStyles({'--video-transform' : 'translate3d(0, ' + -(scrolled * this.parallaxvalue) + 'px, 0)'});
