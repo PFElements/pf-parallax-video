@@ -3,8 +3,8 @@
 A Polymer 2.0 based collection of reusable web components 
 
 [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PFElements/pf-calendar-events)
+[![Polymer Version](https://img.shields.io/badge/polymer-v2-blue.svg)](https://www.polymer-project.org)
 
 ## Demo
 [Click here for Demo](https://pfelements.github.io/pf-parallax-video)
@@ -16,11 +16,11 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 
 # PF Parallax Video
 
-APolymer 2.0 based custom-element to display video with parallax effect and overlays.
+A Polymer 2.0 based custom-element to display video with parallax effect and overlays.
 
 | Element Name | Latest Version (Bower) | Npm version  | Build Status |
 |--------------|------------------------|--------------|--------------|
-| [pf-parallax-video](https://github.com/PFElements/pf-parallax-video) | [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-parallax-video)](https://badge.fury.io/gh/PFElements%2Fpf-parallax-video) | [![npm version](https://badge.fury.io/js/pf-parallax-video.svg)](https://www.npmjs.com/package/pf-parallax-video) |[![Build Status](https://travis-ci.org/PFElements/pf-parallax-video.svg?branch=master)](https://travis-ci.org/PFElements/pf-parallax-video) | 
+| [pf-parallax-video](https://github.com/PFElements/pf-parallax-video) | [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-parallax-video.svg)](https://badge.fury.io/gh/PFElements%2Fpf-parallax-video) | [![npm version](https://badge.fury.io/js/pf-parallax-video.svg)](https://www.npmjs.com/package/pf-parallax-video) |[![Build Status](https://travis-ci.org/PFElements/pf-parallax-video.svg?branch=master)](https://travis-ci.org/PFElements/pf-parallax-video) | 
 
 ## Learn more
 
@@ -33,8 +33,8 @@ See the list of elements, demos, and documentation by browsing this collection o
 
 `<pf-parallax-video id="pf-parallax"
                      title="PF PARALLAX VIDEO"
-                     videoposter="/media/polina.jpg"
-                     src1="../media/small.mp4"
+                     videoposter="/media/poster.PNG"
+                     src1="../media/main.mp4"
                      parallaxvalue="0.30"
   ></pf-parallax-video>` 
 
@@ -69,8 +69,8 @@ Custom property                         | Description                           
 
 <pf-parallax-video id="pf-parallax"
                      title="PF PARALLAX VIDEO"
-                     videoposter="/media/polina.jpg"
-                     src1="../media/small.mp4"
+                     videoposter="/media/poster.PNG"
+                     src1="../media/main.mp4"
                      parallaxvalue="0.30"
   ></pf-parallax-video>
 ```
@@ -113,8 +113,11 @@ Comments, questions, suggestions, issues, and pull requests are all welcome.
 
 Joing us at [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-- [Twitter](<a href="https://twitter.com/polymerjs" class="twitter-follow-button" data-show-count="false">Follow @polymerjs</a>)
+- [Twitter](<a href="https://twitter.com/polymerio" class="twitter-follow-button" data-show-count="false">Follow @polymerio</a>)
 - [Facebook] (https://www.facebook.com/polymerjs)
+- [Google+] (https://plus.google.com/116168214823506639166) 
+- [YouTube] (https://www.youtube.com/channel/UCDKqvDyAn_QTBvCPvrZKTkw) 
+- [Website] (https://polymerjs.io)
 
 ### Some ways to help:
 
