@@ -74,6 +74,9 @@ Custom property                         | Description                           
                      parallaxvalue="0.30"
   ></pf-parallax-video>
 ```
+###Known Issues
+Google  Chrome doesn't catch any videos over 5MB
+so if your video is above 5mb ,it resulted redownload the video in loop
 ## Viewing Your Application
 
 ```
